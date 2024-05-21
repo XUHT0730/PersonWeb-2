@@ -369,6 +369,7 @@ header .headerList {
     width: 249px;
     justify-content: center;
     margin-top: 40px;
+    padding-top: 40px;
   }
 }
 
