@@ -225,23 +225,33 @@ header .headerList {
     padding: 40px 0;
   }
 }
-
-.headerList li a {
+.headerList .nav-link{
   padding: 4px 8px;
   display: block;
   color: #000000;
   margin-right: 40px;
 }
-
 @media(max-width: 375px) {
-  .headerList li a {
+  .headerList .nav-link {
     padding: 0px 0px 24px 0px;
     margin-right: 0px;
   }
 }
-
-.headerList li a:hover {
+.headerList .nav-link:hover {
   font-weight: bold;
+}
+.nav-link span {
+  position: relative;
+  display: block;
+  padding: 4px 8px;
+}
+
+.nav-link.active span:hover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid #919191;
+    mask: conic-gradient(at 8px 8px, rgba(0, 0, 0, 0) 75%, #000 0) 0 0 / calc(100% - 8px) calc(100% - 8px), linear-gradient(#000 0 0) content-box;
 }
 
 .hero {
