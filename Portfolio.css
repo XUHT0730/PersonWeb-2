@@ -67,15 +67,8 @@ img {
 }
 
 .container {
-  display: flex;
   max-width: 1296px;
   margin: 0 auto;
-}
-
-@media(max-width: 375px) {
-  .container {
-    max-width: 375px;
-  }
 }
 
 header {
@@ -84,12 +77,10 @@ header {
   align-items: center;
 }
 
-@media(max-width: 375px) {
+@media(max-width: 767px) {
   header {
-    display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
   }
 }
 
@@ -97,7 +88,7 @@ header .logo {
   width: 30%;
 }
 
-@media(max-width: 375px) {
+@media(max-width: 767px) {
   header .logo {
     width: 100%;
   }
@@ -121,7 +112,6 @@ header .headerList {
 
 @media(max-width: 375px) {
   header .headerList {
-    display: flex;
     width: 100%;
     align-items: center;
     flex-direction: column;
@@ -135,7 +125,7 @@ header .headerList {
   color: #000000;
   margin-right: 40px;
 }
-@media(max-width: 375px) {
+@media(max-width: 767px) {
   .headerList .nav-link {
     padding: 0px 0px 24px 0px;
     margin-right: 0px;
@@ -166,12 +156,11 @@ header .headerList {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 670px;
+  width: 80%;
   margin: 80px auto 24px;
 }
-@media(max-width:375px){
+@media(max-width:767px){
   .title .content{
-    width: 300px;
     margin: 0 auto;
     margin-bottom: 40px;
   }
@@ -201,7 +190,7 @@ header .headerList {
   text-align: center;
   font-size: 24px;
 }
-@media(max-width:375px){
+@media(max-width:767px){
   .title .content p{
     font-size: 20px;
   }
@@ -219,7 +208,7 @@ header .headerList {
 }
 .title .list{
   display: flex;
-  width: 636px;
+  width: 70%;
   justify-content: space-between;
   padding-bottom: 80px;
   margin: 0 auto;
@@ -227,7 +216,6 @@ header .headerList {
 @media(max-width:375px){
   .title .list{
     flex-direction: column;
-    width: 235px;
     align-items: center;
   }
 }
@@ -285,6 +273,7 @@ header .headerList {
 .work-list .card img{
   border-radius: 8px;
   margin-bottom: 16px;
+  border: 1px solid #F1F1F1
 }
 .work-list .card .content{
   margin-left: 16px;
@@ -300,7 +289,7 @@ header .headerList {
   color: #919191;
   margin-bottom: 24px;
 }
-@media(max-width:375px){
+@media(max-width:767px){
   .work-list .card .content p{
     margin-bottom: 16px;
   }
@@ -319,19 +308,30 @@ header .headerList {
 }
 .works .pages{
   display: flex;
-  width: 152px;
+  width: 10%;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
   margin-bottom: 120px;
 }
+@media(max-width:767px){
+  .works .pages{
+    width: 45%;
+    justify-content: space-between;
+  }
+}
 .works .pages .page-num{
-  width: 30%;
+  width: auto;
   padding: 2px 13px;
   font-size: 24px;
   border-radius: 4px;
   background-color: #FFFFFF;
   color: #3B3B3B;
+}
+.works .pages .page-num:hover{
+  background: #1E1E1E;
+  color: #FFFFFF;
+  border: 1px solid #000000;
 }
 .works .dark-page{
   background: #1E1E1E;
@@ -347,7 +347,7 @@ footer .container {
   display: flex;
   justify-content: space-between;
 }
-@media(max-width:375px){
+@media(max-width: 767px){
   footer .container {
     flex-direction: column;
     align-items: center;
@@ -355,13 +355,13 @@ footer .container {
   }
 }
 footer .content {
-  width: 48%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
-@media(max-width:375px){
+@media(max-width: 767px){
   footer .content {
     width: 100%;
     align-items: center;
@@ -376,39 +376,47 @@ footer .content p {
   color: #3B3B3B;
 }
 
-footer a {
+footer .content .mail a{
   display: block;
   color: #919191;
 }
 
 footer .sidebar {
-  width: 48%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: end;
   margin: 80px 0;
 }
-@media(max-width:375px){
+@media(max-width: 767px){
   footer .sidebar {
-    width: auto;
+    width: 100%;
     align-items: center;
     justify-content: center;
     margin: 16px;
   }
 }
 footer .sidebar .list {
+  display: flex;
   border: 1px solid #C1C1C1;
   border-radius: 8px;
   background-color: #FFFFFF;
-  width: 306px;
-  display: flex;
+  width: 50%;
   align-items: center;
   margin-bottom: 24px;
   font-size: 20px;
   color: #3B3B3B;
 }
-
+@media(max-width: 767px){
+  footer .sidebar .list {
+    width: 80%;
+  }
+}
+footer .sidebar .list:hover{
+  background-color: #000000;
+  color: #FFFFFF;
+}
 footer .sidebar .list img {
   padding-left: 24px;
   padding-right: 13px;
