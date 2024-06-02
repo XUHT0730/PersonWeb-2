@@ -214,7 +214,8 @@ header .headerList {
   }
 }
 .headerList .nav-link{
-  padding: 4px 8px;
+  /* 下方的 .nav-link span 已經有設定 padding */
+  /* padding: 4px 8px; */
   display: block;
   color: #000000;
   margin-right: 40px;
