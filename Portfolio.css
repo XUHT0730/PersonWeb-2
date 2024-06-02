@@ -57,6 +57,8 @@ body {
   line-height: 1.5;
   font-size: 16px;
   font-weight: 400;
+  /* 因為 header 需要固定在最上面，所以需要在 body 最上面留白 */
+  padding-top: 60px;
 }
 
 img {
@@ -70,27 +72,40 @@ img {
   max-width: 1296px;
   margin: 0 auto;
 }
-
-header {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+@media(max-width: 1295px) {
+  .container {
+    padding: 0 12px;
+  }
 }
 
-@media(max-width: 767px) {
-  header {
-    flex-direction: column;
-    justify-content: center;
+.header {
+  background: #fff;
+  border-bottom: 1px solid #F1F1F1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.header-inner{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 8px 0;
+}
+
+@media(max-width:992px){
+  .header-inner{
+    justify-content: space-between;
   }
 }
 
 header .logo {
-  width: 30%;
+  margin-right: 318px;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 992px) {
   header .logo {
-    width: 100%;
+    margin-right: 0px;
   }
 }
 
@@ -104,40 +119,84 @@ header .logo a {
   height: 40px;
 }
 
-header .headerList {
+.header-list {
   display: flex;
-  width: 70%;
-  padding: 32px 0;
+  gap: 40px;
 }
 
-@media(max-width: 375px) {
-  header .headerList {
-    width: 100%;
-    align-items: center;
-    flex-direction: column;
-    padding: 40px 0;
-  }
-}
-
-.headerList .nav-link{
+.header-list .nav-link a{
+  color: #000;
+  font-size: 16px;
+  line-height: 1.5;
   padding: 4px 8px;
-  display: block;
-  color: #000000;
-  margin-right: 40px;
+  position: relative;
 }
-@media(max-width: 767px) {
-  .headerList .nav-link {
-    padding: 0px 0px 24px 0px;
-    margin-right: 0px;
-  }
-}
-.headerList .nav-link:hover {
+.header-list .nav-link a:hover{
   font-weight: bold;
 }
-.nav-link span {
-  position: relative;
-  display: block;
-  padding: 4px 8px;
+.header-list .nav-link a::before,
+.header-list .nav-link a::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #919191;
+  opacity: 0;
+  /* 映射效果 */
+  -webkit-box-reflect: below 16px;
+}
+.header-list .nav-link a::before{
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+.header-list .nav-link a::after{
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+.header-list .nav-link a:hover::before,
+.header-list .nav-link a:hover::after {
+  opacity: 1;
+}
+
+.header-list-btn{
+  display: none;
+  cursor: pointer;
+}
+.header-list-btn .header-list-icon{
+  display: none;
+  width: 30px;
+  height: 20px;
+}
+.header-list-control{
+  display: none;
+}
+.header-list-control:checked+.header-list-btn .open{
+  display: none;
+  }
+.header-list-control:checked+.header-list-btn .close{
+  display: inline;
+  }
+  @media(max-width: 992px) {
+    .header-list-btn{
+      display: block;
+    }
+    .header-list {
+      display: none;
+    }
+    /* ~ 代表 .header-list-control:checked 後面所有的元素 */
+    .header-list-control:checked~.header-list{
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header-list-btn .header-list-icon{
+      display: block;
+}
 }
 
 .nav-link.active span:hover::before {
@@ -146,7 +205,16 @@ header .headerList {
     inset: 0;
     border: 1px solid #919191;
     mask: conic-gradient(at 8px 8px, rgba(0, 0, 0, 0) 75%, #000 0) 0 0 / calc(100% - 8px) calc(100% - 8px), linear-gradient(#000 0 0) content-box;
+    }
+
+.nav-link.active span:hover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid #919191;
+    mask: conic-gradient(at 8px 8px, rgba(0, 0, 0, 0) 75%, #000 0) 0 0 / calc(100% - 8px) calc(100% - 8px), linear-gradient(#000 0 0) content-box;
 }
+
 .title{
   background-color: #FAFAFA;
   display: flex;
@@ -169,7 +237,7 @@ header .headerList {
   width: auto;
   margin-right: 598px;
 }
-@media(max-width:375px){
+@media(max-width:767px){
   .title .content .left-img{
     margin: 0 auto;
   }
@@ -178,7 +246,7 @@ header .headerList {
   width: auto;
   margin-left: 598px;
 }
-@media(max-width:375px){
+@media(max-width:767px){
   .title .content .right-img{
     display: none;
   }
@@ -223,7 +291,7 @@ header .headerList {
   width: 47%;
   text-align: center;
 }
-@media(max-width:375px){
+@media(max-width:767px){
   .title .list .item{
     width: 100%;
     margin-bottom: 20px;
@@ -252,7 +320,7 @@ header .headerList {
   justify-content: space-between;
   margin-top: 120px;
 }
-@media(max-width:375px){
+@media(max-width:767px){
   .work-list{
     flex-direction: column;
     align-items: center;
@@ -264,13 +332,14 @@ header .headerList {
   width: calc(50% - 12px);
   margin-bottom: 80px;
 }
-@media(max-width:375px){
+@media(max-width:767px){
   .work-list .card{
     width: 100%;
     margin-bottom: 48px;
   }
 }
 .work-list .card img{
+  width: 100%;
   border-radius: 8px;
   margin-bottom: 16px;
   border: 1px solid #F1F1F1
@@ -341,16 +410,23 @@ header .headerList {
 footer {
   background-size: cover;
   background-image: url('https://github.com/hexschool/2022-web-layout-training/blob/main/2024%20web-camp/footer-bg-lg.png?raw=true');
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
+@media(max-width: 767px){
+  footer {
+    background-image: url('https://github.com/hexschool/2022-web-layout-training/blob/main/2024%20web-camp/footer-bg-sm.png?raw=true');
+  }
+}
 footer .container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 80px 0;
 }
 @media(max-width: 767px){
   footer .container {
     flex-direction: column;
-    align-items: center;
     justify-content: center;
   }
 }

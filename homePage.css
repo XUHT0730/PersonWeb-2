@@ -142,6 +142,8 @@ body {
   line-height: 1.5;
   font-size: 16px;
   font-weight: 400;
+  /* 因為 header 需要固定在最上面，所以需要在 body 最上面留白 */
+  padding-top: 60px;
 }
 
 img {
@@ -155,36 +157,49 @@ img {
   max-width: 1296px;
   margin: 0 auto;
 }
+@media(max-width: 1295px) {
+  .container {
+    padding: 0 12px;
+  }
+}
 
 .whiteLine {
   width: 446px;
   border-bottom: 2px solid #F1F1F1;
 }
-@media(max-width: 767px) {
+@media(max-width: 992px) {
   .whiteLine {
     display: none;
   }
 }
-header {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+.header {
+  background: #fff;
+  border-bottom: 1px solid #F1F1F1;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
-@media(max-width: 767px) {
-  header {
-    flex-direction: column;
-    justify-content: center;
+.header-inner{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 8px 0;
+}
+
+@media(max-width:992px){
+  .header-inner{
+    justify-content: space-between;
   }
 }
 
 header .logo {
-  width: 30%;
+  margin-right: 318px;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 992px) {
   header .logo {
-    width: 100%;
+    margin-right: 0px;
   }
 }
 
@@ -198,42 +213,93 @@ header .logo a {
   height: 40px;
 }
 
-header .headerList {
+.header-list {
   display: flex;
-  width: 70%;
-  padding: 32px 0;
+  gap: 40px;
 }
 
-@media(max-width: 767px) {
-  header .headerList {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    flex-direction: column;
-    padding: 40px 0;
-  }
+.header-list .nav-link a{
+  color: #000;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 4px 8px;
+  position: relative;
 }
-.headerList .nav-link{
-  /* 下方的 .nav-link span 已經有設定 padding */
-  /* padding: 4px 8px; */
-  display: block;
-  color: #000000;
-  margin-right: 40px;
-}
-@media(max-width: 767px) {
-  .headerList .nav-link {
-    padding: 0px 0px 24px 0px;
-    margin-right: 0px;
-  }
-}
-.headerList .nav-link:hover {
+.header-list .nav-link a:hover{
   font-weight: bold;
 }
-.nav-link span {
-  position: relative;
-  display: block;
-  padding: 4px 8px;
+.header-list .nav-link a::before,
+.header-list .nav-link a::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #919191;
+  opacity: 0;
+  /* 映射效果 */
+  -webkit-box-reflect: below 16px;
 }
+.header-list .nav-link a::before{
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+.header-list .nav-link a::after{
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+.header-list .nav-link a:hover::before,
+.header-list .nav-link a:hover::after {
+  opacity: 1;
+}
+
+.header-list-btn{
+  display: none;
+  cursor: pointer;
+}
+.header-list-btn .header-list-icon{
+  display: none;
+  width: 30px;
+  height: 20px;
+}
+.header-list-control{
+  display: none;
+}
+.header-list-control:checked+.header-list-btn .open{
+  display: none;
+  }
+.header-list-control:checked+.header-list-btn .close{
+  display: inline;
+  }
+  @media(max-width: 992px) {
+    .header-list-btn{
+      display: block;
+    }
+    .header-list {
+      display: none;
+    }
+    /* ~ 代表 .header-list-control:checked 後面所有的元素 */
+    .header-list-control:checked~.header-list{
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header-list-btn .header-list-icon{
+      display: block;
+}
+}
+
+.nav-link.active span:hover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid #919191;
+    mask: conic-gradient(at 8px 8px, rgba(0, 0, 0, 0) 75%, #000 0) 0 0 / calc(100% - 8px) calc(100% - 8px), linear-gradient(#000 0 0) content-box;
+    }
 
 .nav-link.active span:hover::before {
     content: "";
@@ -248,7 +314,7 @@ header .headerList {
   justify-content: space-between;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 992px) {
   .hero {
     flex-direction: column-reverse;
     justify-content: center;
@@ -780,7 +846,11 @@ header .headerList {
   border-radius: 8px;
   outline: 1px solid #F1F1F1;
 }
-
+@media(max-width: 767px){
+  .articles .articlesList .card img {
+    width: 100%;
+  }
+}
 .articles .articlesList .card p {
   font-size: 20px;
   font-weight: bold;
@@ -848,16 +918,23 @@ header .headerList {
 footer {
   background-size: cover;
   background-image: url('https://github.com/hexschool/2022-web-layout-training/blob/main/2024%20web-camp/footer-bg-lg.png?raw=true');
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
+@media(max-width: 767px){
+  footer {
+    background-image: url('https://github.com/hexschool/2022-web-layout-training/blob/main/2024%20web-camp/footer-bg-sm.png?raw=true');
+  }
+}
 footer .container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 80px 0;
 }
 @media(max-width: 767px){
   footer .container {
     flex-direction: column;
-    align-items: center;
     justify-content: center;
   }
 }
