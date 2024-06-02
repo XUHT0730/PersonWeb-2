@@ -293,22 +293,6 @@ header .logo a {
 }
 }
 
-.nav-link.active span:hover::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 1px solid #919191;
-    mask: conic-gradient(at 8px 8px, rgba(0, 0, 0, 0) 75%, #000 0) 0 0 / calc(100% - 8px) calc(100% - 8px), linear-gradient(#000 0 0) content-box;
-    }
-
-.nav-link.active span:hover::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 1px solid #919191;
-    mask: conic-gradient(at 8px 8px, rgba(0, 0, 0, 0) 75%, #000 0) 0 0 / calc(100% - 8px) calc(100% - 8px), linear-gradient(#000 0 0) content-box;
-}
-
 .hero {
   display: flex;
   justify-content: space-between;
