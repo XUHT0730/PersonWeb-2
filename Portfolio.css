@@ -531,27 +531,23 @@ footer {
   background-position: center;
   background-repeat: no-repeat;
 }
-
-@media(max-width: 767px) {
+@media(max-width: 767px){
   footer {
     background-image: url('https://github.com/hexschool/2022-web-layout-training/blob/main/2024%20web-camp/footer-bg-sm.png?raw=true');
   }
 }
-
 footer .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 80px 0;
 }
-
-@media(max-width: 767px) {
+@media(max-width: 767px){
   footer .container {
     flex-direction: column;
     justify-content: center;
   }
 }
-
 footer .content {
   width: 50%;
   display: flex;
@@ -559,14 +555,12 @@ footer .content {
   justify-content: center;
   align-items: flex-start;
 }
-
-@media(max-width: 767px) {
+@media(max-width: 767px){
   footer .content {
     width: 100%;
     align-items: center;
   }
 }
-
 footer .content h1 {
   margin-bottom: 24px;
 }
@@ -576,7 +570,7 @@ footer .content p {
   color: #3B3B3B;
 }
 
-footer .content .mail a {
+footer .content .mail a{
   display: block;
   color: #919191;
 }
@@ -589,16 +583,14 @@ footer .sidebar {
   align-items: end;
   margin: 80px 0;
 }
-
-@media(max-width: 767px) {
+@media(max-width: 767px){
   footer .sidebar {
-    width: 100%;
+    width: auto;
     align-items: center;
     justify-content: center;
     margin: 16px;
   }
 }
-
 footer .sidebar .list {
   display: flex;
   border: 1px solid #C1C1C1;
@@ -609,19 +601,17 @@ footer .sidebar .list {
   margin-bottom: 24px;
   font-size: 20px;
   color: #3B3B3B;
+  padding-right: 24px;
 }
-
-@media(max-width: 767px) {
+@media(max-width: 767px){
   footer .sidebar .list {
-    width: 80%;
+    width: 100%;
   }
 }
-
-footer .sidebar .list:hover {
+footer .sidebar .list:hover{
   background-color: #000000;
   color: #FFFFFF;
 }
-
 footer .sidebar .list img {
   padding-left: 24px;
   padding-right: 13px;
